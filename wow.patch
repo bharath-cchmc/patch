@@ -1,0 +1,69 @@
+Only in young_computation-rose-1a9bb86b5464: .DS_Store
+Only in edited-Super-Enhancer: .git
+Only in edited-Super-Enhancer: README.md
+Only in young_computation-rose-1a9bb86b5464: README.txt
+diff young_computation-rose-1a9bb86b5464/ROSE_bamToGFF.py edited-Super-Enhancer/ROSE_bamToGFF.py
+74c74
+<         gffLocus = ROSE_utils.Locus(line[0],int(line[3]),int(line[4]),line[6],line[1])
+---
+>         gffLocus = ROSE_utils.Locus(line[0],float(line[3]),float(line[4]),line[6],line[1])
+diff young_computation-rose-1a9bb86b5464/ROSE_main.py edited-Super-Enhancer/ROSE_main.py
+241c241
+<     usage = "usage: %prog [options] -g [GENOME] -i [INPUT_REGION_GFF] -r [RANKBY_BAM_FILE] -o [OUTPUT_FOLDER] [OPTIONAL_FLAGS]"
+---
+>     usage = "usage: %prog [options] -g [INPUT_GENOME] -i [INPUT_REGION_GFF] -r [RANKBY_BAM_FILE] -o [OUTPUT_FOLDER] [OPTIONAL_FLAGS]"
+251c251
+<                       help = "Enter the genome build (MM9,MM8,HG18,HG19)")
+---
+>                       help = "Reference genome file: example- hg18_refseq.ucsc")
+301a302
+> 
+332c333
+< 
+---
+>     
+336,342c337,345
+<     genomeDict = {
+<         'HG18':'%s/annotation/hg18_refseq.ucsc' % (cwd),
+<         'MM9': '%s/annotation/mm9_refseq.ucsc' % (cwd),
+<         'HG19':'%s/annotation/hg19_refseq.ucsc' % (cwd),
+<         'MM8': '%s/annotation/mm8_refseq.ucsc' % (cwd),
+<         'MM10':'%s/annotation/mm10_refseq.ucsc' % (cwd),
+<         }
+---
+> ##    genomeDict = {
+> ##        'HG18':'%s/annotation/hg18_refseq.ucsc' % (cwd),
+> ##        'MM9': '%s/annotation/mm9_refseq.ucsc' % (cwd),
+> ##        'HG19':'%s/annotation/hg19_refseq.ucsc' % (cwd),
+> ##        'MM8': '%s/annotation/mm8_refseq.ucsc' % (cwd),
+> ##        'MM10':'%s/annotation/mm10_refseq.ucsc' % (cwd),
+> ##        }
+>     
+>     annotFile = genome
+344c347
+<     annotFile = genomeDict[upper(genome)]
+---
+> ##    annotFile = genomeDict[upper(genome)]
+412c415
+<         cmd1 = "python ROSE_bamToGFF.py -f 1 -e 200 -r -m %s -b %s -i %s -o %s &" % (nBin,bamFile,stitchedGFFFile,mappedOut1)
+---
+>         cmd1 = "python /usr/local/'bin'/ROSE_bamToGFF.py -f 1 -e 200 -r -m %s -b %s -i %s -o %s &" % (nBin,bamFile,stitchedGFFFile,mappedOut1)
+419c422
+<         cmd2 = "python ROSE_bamToGFF.py -f 1 -e 200 -r -m %s -b %s -i %s -o %s &" % (nBin,bamFile,inputGFFFile,mappedOut2)
+---
+>         cmd2 = "python /usr/local/'bin'/ROSE_bamToGFF.py -f 1 -e 200 -r -m %s -b %s -i %s -o %s &" % (nBin,bamFile,inputGFFFile,mappedOut2)
+484c487
+<         cmd = 'R --no-save %s %s %s %s < ROSE_callSuper.R' % (outFolder,outputFile1,inputName,controlName)
+---
+>         cmd = 'R --no-save %s %s %s %s < /usr/local/bin/ROSE_callSuper.R' % (outFolder,outputFile1,inputName,controlName)
+489c492
+<         cmd = 'R --no-save %s %s %s %s < ROSE_callSuper.R' % (outFolder,outputFile1,inputName,controlName)
+---
+>         cmd = 'R --no-save %s %s %s %s < /usr/local/bin/ROSE_callSuper.R' % (outFolder,outputFile1,inputName,controlName)
+diff young_computation-rose-1a9bb86b5464/ROSE_utils.py edited-Super-Enhancer/ROSE_utils.py
+265c265
+<         coords = [int(start),int(end)]
+---
+>         coords = [float(start),float(end)]
+Binary files young_computation-rose-1a9bb86b5464/ROSE_utils.pyc and edited-Super-Enhancer/ROSE_utils.pyc differ
+Only in young_computation-rose-1a9bb86b5464: annotation
